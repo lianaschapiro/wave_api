@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-5.times do
-  Exchange.create({
-  })
-end
+# 5.times do
+#   Exchange.create({
+#   })
+# end
 
 # Payin.create([{ exchange_id: 1, amount: 121.13451, timestamp: '2017-01-05 12:00:12'}])
 # Payin.create([{ exchange_id: 1, amount: 123.2345353, timestamp: '2018-01-01 11:59:59'}])
