@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :exchanges
   resources :payins
+  resources :payouts
 
 end
