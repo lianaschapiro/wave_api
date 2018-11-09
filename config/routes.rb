@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :payouts
 
   get '/revenue' => 'revenues#show'
+  get '/duplicates' => 'exchanges#duplicates'
 
 end

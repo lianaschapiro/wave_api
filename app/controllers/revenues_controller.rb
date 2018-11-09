@@ -1,6 +1,6 @@
 class RevenuesController < ApplicationController
 
-  # calculate revenue for a given time period
+  # calculate revenue in a given time period
   def show
     # isolate time period from request params
     start_time = params[:from]
@@ -10,7 +10,7 @@ class RevenuesController < ApplicationController
     payin_total = 0
     payout_total = 0
 
-    # target specific payins / payouts based on time period
+    # target specific payins / payouts in time period
     payins = Payin.where("timestamp > ? AND timestamp <= ?", start_time, end_time).order('timestamp')
     payouts = Payout.where("timestamp > ? AND timestamp <= ?", start_time, end_time).order('timestamp')
 
@@ -24,7 +24,7 @@ class RevenuesController < ApplicationController
       payout_total += p.amount
     end
 
-    # calculate final revenue and return JSON response
+    # calculate final revenue
     revenue = payin_total - payout_total
     revenue = revenue.round(2)
     render json: {status: 'SUCCESS', data: [revenue: revenue]}, status: :ok
