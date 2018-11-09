@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :payins
   resources :payouts
 
+  get '/revenue' => 'revenues#show'
+
 end
