@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2018_11_08_233440) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "exchanges", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "payins", force: :cascade do |t|
-    t.integer "exchange_id"
+    t.bigint "exchange_id"
     t.string "timestamp"
     t.float "amount"
     t.datetime "created_at", null: false
@@ -27,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_233440) do
   end
 
   create_table "payouts", force: :cascade do |t|
-    t.integer "exchange_id"
+    t.bigint "exchange_id"
     t.string "timestamp"
     t.float "amount"
     t.datetime "created_at", null: false
@@ -35,4 +38,6 @@ ActiveRecord::Schema.define(version: 2018_11_08_233440) do
     t.index ["exchange_id"], name: "index_payouts_on_exchange_id"
   end
 
+  add_foreign_key "payins", "exchanges"
+  add_foreign_key "payouts", "exchanges"
 end
