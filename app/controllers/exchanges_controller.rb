@@ -7,6 +7,15 @@ class ExchangesController < ApplicationController
     render json: {status: 'SUCCESS', data: [payins: payins, payouts: payouts]}, status: :ok
   end
 
+  def create
+    exchange = Exchange.new(exchange_params)
+    if exchange.save
+      render json: {status: 'SUCCESS', data: exchange}, status: :ok
+    else
+      render json: {status: 'ERROR', data: exchange.errors}, status: :unprocessable_entry
+    end
+  end
+
   # find transactions with duplicate payouts in a given time period
   def duplicates
     # isolate time period from request params
